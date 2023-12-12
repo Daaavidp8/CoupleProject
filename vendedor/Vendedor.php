@@ -1,7 +1,7 @@
 <?php
-include_once "../conexion2.php";
+include_once "conexion.php";
 
-class Inventario extends \conexion2
+class Vendedor extends Conexion
 {
     public function __construct()
     {
@@ -9,7 +9,7 @@ class Inventario extends \conexion2
     }
 
     public function Mostrar(){
-        $mostrar = $this->conectar()->prepare("Select * FROM inventario");
+        $mostrar = $this->conectar()->prepare("Select * FROM vendedor");
         $mostrar->execute();
         return $mostrar->fetchAll();
     }

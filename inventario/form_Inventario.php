@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Pagina Principal</title>
-    <!-- Add Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://kit.fontawesome.com/9082f21abd.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="inventario.css">
-
-</head>
-<body class="container mt-5">
 <?php
 
-ini_set("display_errors",1);
-include_once "./inventario.php";
+include_once "Inventario.php";
 
 $mostrar = new Inventario();
 try {
@@ -40,27 +26,27 @@ try {
     <form action="./insertar.php" method="post">
         <tr>
             <td>
-                <input type="text" class="form-control" name="" required>
+                <input type="text" class="form-control" name="valores[]" required>
             </td>
 
             <td>
-                <input type="text" class="form-control" name="" required>
+                <input type="text" class="form-control" name="valores[]" required>
             </td>
 
             <td>
-                <input type="text" class="form-control" name="" required>
+                <input type="text" class="form-control" name="valores[]" required>
             </td>
 
             <td>
-                <input type="text" class="form-control" name="" required>
+                <input type="text" class="form-control" name="valores[]" required>
             </td>
 
             <td>
-                <input type="text" class="form-control" name="" required>
+                <input type="text" class="form-control" name="valores[]" required>
             </td>
 
             <td>
-                <input type="text" class="form-control" name="" required>
+                <input type="text" class="form-control" name="valores[]" required>
             </td>
 
             <td class="d-flex justify-content-center">
@@ -121,9 +107,3 @@ try {
     ?>
 </table>
 
-
-
-
-
-</body>
-</html>

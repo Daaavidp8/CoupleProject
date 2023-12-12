@@ -1,6 +1,6 @@
 <?php
 
-class Conexion2
+class Conexion
 {
     private $pdo;
     private $host;

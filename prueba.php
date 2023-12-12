@@ -2,9 +2,9 @@
 ini_set("display_errors",1);
 
 
-include_once "./conexion2.php";
+include_once "./conexion.php";
 
-$select = new Conexion2();
+$select = new Conexion();
 
 $select = $select->conectar()->prepare("Select * FROM vendedor");
 
