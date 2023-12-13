@@ -1,10 +1,11 @@
 <?php
 include_once "acciones.php";
 
-class Vendedor extends acciones
+class Pieza extends acciones
 {
     public function __construct()
     {
         parent::__construct();
     }
+
 }

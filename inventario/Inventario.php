@@ -1,16 +1,10 @@
 <?php
-include_once "conexion.php";
+include_once "acciones.php";
 
-class Inventario extends Conexion
+class Inventario extends acciones
 {
     public function __construct()
     {
         parent::__construct();
-    }
-
-    public function Mostrar(){
-        $mostrar = $this->conectar()->prepare("Select * FROM inventario");
-        $mostrar->execute();
-        return $mostrar->fetchAll();
     }
 }

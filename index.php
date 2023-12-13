@@ -12,23 +12,70 @@
 </head>
 <body class="container mt-5">
 <?php
-    ini_set("display_errors",1);
+session_start();
 
 
-    $tablaActual = "";
-    //TODO $_SESSION['idTablaActual'] en el switch
-    switch (0){
+ini_set("display_errors",1);
+
+
+if (!isset($_SESSION['idTablaActual'])) {
+    $_SESSION['idTablaActual'] = 0;
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] === "GET") {
+
+
+
+    $directorio = __DIR__;
+
+    // Obtener la lista de archivos y carpetas en el directorio
+    $archivos = scandir($directorio);
+
+    // Filtrar solo las carpetas
+    $numcarpetas = array_filter($archivos, function ($item) use ($directorio) {
+        // Ignorar las carpetas "." y ".." y seleccionar solo directorios no ocultos
+        return is_dir($directorio . '/' . $item) && $item[0] != '.';
+    });
+
+    $numcarpetas = count($numcarpetas) -1;
+
+
+    if (isset($_REQUEST["pasar"])) {
+        if ($_SESSION['idTablaActual'] === 0 && $_REQUEST["pasar"] == -1) {
+            $_SESSION['idTablaActual'] = $numcarpetas;
+        } else if ($_SESSION['idTablaActual'] === $numcarpetas && $_REQUEST["pasar"] == 1) {
+            $_SESSION['idTablaActual'] = 0;
+        }else {
+            $_SESSION['idTablaActual'] += $_REQUEST['pasar'];
+        }
+    }
+}
+
+
+
+
+    $ruta = "";
+    switch ($_SESSION['idTablaActual']){
         case 0:
-            $tablaActual = "./inventario/form_Inventario.php";
+            $ruta = "./inventario/form_Inventario.php";
             break;
 
         case 1:
-            $tablaActual = "./vendedor/form_Vendedor.php";
+            $ruta = "./vendedor/form_Vendedor.php";
             break;
 
-
+        case 2:
+            $ruta = "./pieza/form_pieza.php";
+            break;
     }
-    include_once $tablaActual;
+    include_once  $ruta;
 ?>
+
+<div>
+    <a href="index.php?pasar=-1">Anterior</a>
+    <a href="index.php?pasar=1">Siguiente</a>
+    <a href="cerrar_sesion.php">Cerrar La sesion</a>
+</div>
 </body>
 </html>

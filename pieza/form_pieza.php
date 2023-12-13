@@ -1,41 +1,28 @@
 <?php
-include_once "Inventario.php";
 
-$mostrar = new Inventario();
+include_once "Pieza.php";
+
+$mostrar = new Pieza();
 try {
-    $consulta = $mostrar->Mostrar("inventario");
+    $consulta = $mostrar->Mostrar("pieza");
 }catch (Exception $e){
     die($e->getMessage());
 }
 
 ?>
-<h1 class="display-4">Inventario</h1>
+
+<h1 class="display-4">Pieza</h1>
 <table class="table table-bordered" style="border-collapse: collapse">
     <tr class="thead-dark">
-        <th>Num Pieza</th>
-        <th>Num Bin</th>
-        <th>Cant. Disponible</th>
-        <th>Fecha Recuento</th>
-        <th>Periodo Recuento</th>
-        <th>Cant. Minima</th>
+        <th>Numero Pieza</th>
+        <th>Nombre Pieza</th>
+        <th>Precio Venta</th>
         <th></th>
     </tr>
 
 
     <form action="./insertar.php" method="post">
         <tr>
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
-
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
-
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
-
             <td>
                 <input type="text" class="form-control" name="valores[]" required>
             </td>
@@ -66,31 +53,13 @@ try {
 
             <td class="td-tabla">
                 <div class="campos">
-                    <?=$fila['numbin']?>
+                    <?=$fila['nompieza'] === null ? "Sin nombre": $fila['nompieza']?>
                 </div>
             </td>
 
             <td class="td-tabla">
                 <div class="campos">
-                    <?=$fila['cantdisponible']?>
-                </div>
-            </td>
-
-            <td class="td-tabla">
-                <div class="campos">
-                    <?=$fila['fecharecuento']?>
-                </div>
-            </td>
-
-            <td class="td-tabla">
-                <div class="campos">
-                    <?=$fila['periodorecuen']?>
-                </div>
-            </td>
-
-            <td class="td-tabla">
-                <div class="campos">
-                    <?=$fila['cantminima']?>
+                    <?=$fila['preciovent']?>
                 </div>
             </td>
 
@@ -105,4 +74,5 @@ try {
 
     ?>
 </table>
+
 

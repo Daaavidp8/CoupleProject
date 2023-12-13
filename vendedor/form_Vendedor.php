@@ -1,15 +1,18 @@
 <?php
+ini_set("display_errors",1);
+
 include_once "Vendedor.php";
 
 $mostrar = new Vendedor();
 try {
-    $consulta = $mostrar->Mostrar();
+    $consulta = $mostrar->Mostrar('vendedor');
 }catch (Exception $e){
     die($e->getMessage());
 }
 
 ?>
 
+<h1 class="display-4">Vendedor</h1>
 <table class="table table-bordered" style="border-collapse: collapse">
     <tr class="thead-dark">
         <th>Num Vendedor</th>
