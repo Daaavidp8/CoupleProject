@@ -25,24 +25,11 @@ if (!isset($_SESSION['idTablaActual'])) {
 
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
-
-    $directorio = __DIR__;
-
-    // Obtener la lista de archivos y carpetas en el directorio
-    $archivos = scandir($directorio);
-
-    // Filtrar solo las carpetas
-    $numcarpetas = array_filter($archivos, function ($item) use ($directorio) {
-        // Ignorar las carpetas "." y ".." y seleccionar solo directorios no ocultos
-        return is_dir($directorio . '/' . $item) && $item[0] != '.';
-    });
-
-    $numcarpetas = count($numcarpetas) - 2;
-
     if (isset($_REQUEST["pasar"])) {
+        $numTablas = 5;
         if ($_SESSION['idTablaActual'] === 0 && $_REQUEST["pasar"] == -1) {
-            $_SESSION['idTablaActual'] = $numcarpetas;
-        } else if ($_SESSION['idTablaActual'] === $numcarpetas && $_REQUEST["pasar"] == 1) {
+            $_SESSION['idTablaActual'] = $numTablas - 1;
+        } else if ($_SESSION['idTablaActual'] === $numTablas - 1 && $_REQUEST["pasar"] == 1) {
             $_SESSION['idTablaActual'] = 0;
         }else {
             $_SESSION['idTablaActual'] += $_REQUEST['pasar'];
@@ -69,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
             break;
 
         case 3:
-            $ruta = "./inventario/form_Inventario.php";
+            $ruta = "./inventario/form_Pedido.php";
             break;
 
         default:
