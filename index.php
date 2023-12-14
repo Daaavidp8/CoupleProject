@@ -26,7 +26,6 @@ if (!isset($_SESSION['idTablaActual'])) {
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
 
-
     $directorio = __DIR__;
 
     // Obtener la lista de archivos y carpetas en el directorio
@@ -38,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
         return is_dir($directorio . '/' . $item) && $item[0] != '.';
     });
 
-    $numcarpetas = count($numcarpetas) -1;
+    $numcarpetas = count($numcarpetas) - 1;
 
 
     if (isset($_REQUEST["pasar"])) {
@@ -58,15 +57,20 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
     $ruta = "";
     switch ($_SESSION['idTablaActual']){
         case 0:
-            $ruta = "./inventario/form_Inventario.php";
-            break;
-
-        case 1:
             $ruta = "./vendedor/form_Vendedor.php";
             break;
 
+        case 1:
+            $ruta = "./suministra/form_suministra.php";
+            break;
+
+
         case 2:
             $ruta = "./pieza/form_pieza.php";
+            break;
+
+        case 3:
+            $ruta = "./inventario/form_Inventario.php";
             break;
     }
     include_once  $ruta;
@@ -75,7 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 <div>
     <a href="index.php?pasar=-1">Anterior</a>
     <a href="index.php?pasar=1">Siguiente</a>
-    <a href="cerrar_sesion.php">Cerrar La sesion</a>
 </div>
 </body>
 </html>

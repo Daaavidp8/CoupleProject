@@ -1,29 +1,38 @@
 <?php
+include_once "Suministra.php";
 
-include_once "Pieza.php";
+$suministra = new Suministra();
 
-$mostrar = new Pieza();
 try {
-    $consulta = $mostrar->Mostrar("pieza");
+    $suministra = $suministra->Mostrar("preciosum");
 }catch (Exception $e){
     die($e->getMessage());
 }
 
-
 ?>
 
-<h1 class="display-4">Pieza</h1>
+<h1 class="display-4">Suministra</h1>
 <table class="table table-bordered" style="border-collapse: collapse">
+
     <tr class="thead-dark">
-        <th>Numero Pieza</th>
-        <th>Nombre Pieza</th>
-        <th>Precio Venta</th>
+        <th>Num Pieza</th>
+        <th>Num Vendedor</th>
+        <th>Precio Unitario</th>
+        <th>Diassum</th>
+        <th>Descuento</th>
         <th></th>
     </tr>
 
-
     <form action="./insertar.php" method="post">
         <tr>
+            <td>
+                <input type="text" class="form-control" name="valores[]" required>
+            </td>
+
+            <td>
+                <input type="text" class="form-control" name="valores[]" required>
+            </td>
+
             <td>
                 <input type="text" class="form-control" name="valores[]" required>
             </td>
@@ -43,8 +52,10 @@ try {
         </tr>
     </form>
 
+
+
     <?php
-    foreach ($consulta as $fila){?>
+    foreach ($suministra as $fila){?>
         <tr>
             <td class="">
                 <div class="campos">
@@ -54,13 +65,25 @@ try {
 
             <td class="td-tabla">
                 <div class="campos">
-                    <?=$fila['nompieza'] === null ? "Sin nombre": $fila['nompieza']?>
+                    <?=$fila['numvend']?>
                 </div>
             </td>
 
             <td class="td-tabla">
                 <div class="campos">
-                    <?=$fila['preciovent']?>
+                    <?=$fila['preciounit']?>
+                </div>
+            </td>
+
+            <td class="td-tabla">
+                <div class="campos">
+                    <?=$fila['diassum']?>
+                </div>
+            </td>
+
+            <td class="td-tabla">
+                <div class="campos">
+                    <?=$fila['descuento']?>
                 </div>
             </td>
 
@@ -75,5 +98,4 @@ try {
 
     ?>
 </table>
-
 
