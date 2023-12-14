@@ -1,7 +1,5 @@
 <?php
-
-
-class Pedido extends Conexion implements acciones
+class Linped extends Conexion implements acciones
 {
     public function __construct()
     {
@@ -10,7 +8,7 @@ class Pedido extends Conexion implements acciones
 
     public function Mostrar(){
         try {
-            $mostrar = $this->conectar()->prepare("Select * FROM pedido");
+            $mostrar = $this->conectar()->prepare("Select * FROM linped");
             $mostrar->execute();
             return $mostrar->fetchAll();
         }catch (Exception $error){
@@ -20,7 +18,7 @@ class Pedido extends Conexion implements acciones
 
     public function Insertar($valores){
         try {
-            $sentencia = 'INSERT INTO pedido VALUES (?,?,?)';
+           $sentencia = 'INSERT INTO linped VALUES (?,?,?)';
             $insercion = $this->conectar()->prepare($sentencia);
             $insercion->execute($valores);
         }catch (Exception $error){
@@ -30,7 +28,7 @@ class Pedido extends Conexion implements acciones
 
     public function Eliminar($id)
     {
-        $eliminar = $this->conectar()->prepare("DELETE FROM pedido WHERE numpedido = :codigo");
+        $eliminar = $this->conectar()->prepare("DELETE FROM linped WHERE numpedido = :codigo");
         $eliminar->bindParam(':codigo', $id);
         $eliminar->execute();
     }
