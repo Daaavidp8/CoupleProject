@@ -110,7 +110,7 @@ try {
 
             <td class="campos">
                 <a href="" class="btn btn-primary mr-1" ><i class="fa-solid fa-pen-to-square"></i></a>
-                <a href="acciones/eliminar.php?id=<?=$fila['numvend']?>" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                <a href="controladores/eliminar.php?id=<?=$fila['numvend']?>" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
             </td>
         </tr>
 

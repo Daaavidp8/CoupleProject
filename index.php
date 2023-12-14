@@ -59,6 +59,10 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
             $ruta = "./inventario/form_Pedido.php";
             break;
 
+        case 4:
+            $ruta = "./inventario/form_Inventario.php";
+            break;
+
         default:
             $ruta = "./vendedor/form_Vendedor.php";
             $_SESSION['idTablaActual'] = 0;
