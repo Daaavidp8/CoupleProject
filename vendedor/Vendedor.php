@@ -1,7 +1,6 @@
 <?php
-include_once "conexion.php";
-
-include_once "acciones.php";
+include_once "./conexion.php";
+include_once "./acciones.php";
 
 class Vendedor extends Conexion implements acciones
 {

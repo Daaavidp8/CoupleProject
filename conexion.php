@@ -13,7 +13,7 @@ class Conexion
         $this->host = "localhost";
         $this->nombreBD = "proveedores";
         $this->usuario = "root";
-        $this->password = "root";
+        $this->password = "";
     }
 
     public function conectar(){

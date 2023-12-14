@@ -1,7 +1,7 @@
 <?php
-include_once "conexion.php";
+include_once "./conexion.php";
 
-include_once "acciones.php";
+include_once "./acciones.php";
 
 class Pieza extends Conexion implements acciones
 {
