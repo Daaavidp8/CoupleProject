@@ -20,58 +20,31 @@ include_once "Suministra.php";
 
 ini_set("display_errors",1);
 
+
+$id = $_REQUEST['id'][0];
+$nombre = $_REQUEST['id'][1];
+
+
 $suministra = new Suministra();
 
 try {
-    $suministra = $suministra->Mostrar();
+    $suministra = $suministra->Mostrar($id);
 }catch (Exception $e){
     die($e->getMessage());
 }
 
+
 ?>
 
-<h1 class="display-4"><?= $_REQUEST['id'][1] ?></h1>
+<h1 class="display-4"><?= $nombre?></h1>
 <table class="table table-bordered" style="border-collapse: collapse">
 
     <tr class="thead-dark">
         <th>Num Pieza</th>
-        <th>Num Vendedor</th>
         <th>Precio Unitario</th>
         <th>Diassum</th>
         <th>Descuento</th>
-        <th></th>
     </tr>
-
-    <form action="controladores/insertar.php" method="post">
-        <tr>
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
-
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
-
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
-
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
-
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
-
-            <td class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-success">Insertar</button>
-            </td>
-
-        </tr>
-    </form>
-
-
 
     <?php
     foreach ($suministra as $fila){?>
@@ -79,12 +52,6 @@ try {
             <td class="">
                 <div class="campos">
                     <?=$fila['numpieza']?>
-                </div>
-            </td>
-
-            <td class="td-tabla">
-                <div class="campos">
-                    <?=$fila['numvend']?>
                 </div>
             </td>
 
@@ -104,11 +71,6 @@ try {
                 <div class="campos">
                     <?=$fila['descuento']?>
                 </div>
-            </td>
-
-            <td class="campos">
-                <a href="" class="btn btn-primary mr-1"><i class="fa-solid fa-pen-to-square"></i></a>
-                <a href="controladores/eliminar.php?id[]=<?= $fila['numvend']?>&id[]=<?=$fila['numpieza']?>" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
             </td>
         </tr>
 

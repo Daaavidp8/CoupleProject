@@ -31,6 +31,12 @@ class Vendedor extends Conexion implements acciones
 
     public function Eliminar($id)
     {
+        $suministro = new Suministra();
+        $suministro->Eliminar($id);
+
+        $pedido = new Pedido();
+        $pedido->Eliminar($id);
+
         $eliminar = $this->conectar()->prepare("DELETE FROM vendedor WHERE numvend = :codigo");
         $eliminar->bindParam(':codigo', $id);
         $eliminar->execute();

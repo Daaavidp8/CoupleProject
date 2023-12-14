@@ -13,6 +13,8 @@ include_once "../linped/Linped.php";
 include_once "../inventario/Inventario.php";
 
 
+
+
 switch ($_SESSION['idTablaActual']){
     case 0:
         $eliminar = new Vendedor();
@@ -43,6 +45,5 @@ switch ($_SESSION['idTablaActual']){
 }
 
 
-$eliminar->Eliminar($_REQUEST['id']);
-header("Location: ../index.php");
-exit();
+//header("Location: ../index.php");
+//exit();

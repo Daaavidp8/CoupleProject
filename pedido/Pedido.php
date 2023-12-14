@@ -30,6 +30,19 @@ class Pedido extends Conexion implements acciones
 
     public function Eliminar($id)
     {
+        $linpedido = new Linped();
+
+
+        $numpedidos = $this->conectar()->prepare("Select numpedido from pedido where numvend = :id");
+        $numpedidos->bindParam(':id', $id);
+        $numpedidos->execute();
+        $numpedidos = $numpedidos->fetchAll();
+
+        foreach ($numpedidos as $numpedido){
+                $linpedido->Eliminar($numpedido['numpedido']);
+        }
+
+
         $eliminar = $this->conectar()->prepare("DELETE FROM pedido WHERE numpedido = :codigo");
         $eliminar->bindParam(':codigo', $id);
         $eliminar->execute();

@@ -60,6 +60,10 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
             break;
 
         case 3:
+            $ruta = "./linped/form_Linped.php";
+            break;
+
+        case 4:
             $ruta = "./inventario/form_Inventario.php";
             break;
 
