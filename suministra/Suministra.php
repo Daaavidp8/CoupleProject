@@ -1,6 +1,4 @@
 <?php
-include_once "../conexion.php";
-include_once "../acciones.php";
 
 class Suministra extends Conexion implements acciones
 {

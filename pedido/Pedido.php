@@ -1,6 +1,5 @@
 <?php
-include_once "../conexion.php";
-include_once "../acciones.php";
+
 
 class Pedido extends Conexion implements acciones
 {
