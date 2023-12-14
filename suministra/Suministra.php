@@ -29,13 +29,20 @@ class Suministra extends Conexion implements acciones
 
     public function Eliminar($id)
     {
-        // Usar claves foraneas
-        $id = implode($id);
-
-
-        $eliminar = $this->conectar()->prepare("DELETE FROM preciosum WHERE numvend = :numvend and numpieza= :numpieza");
-        $eliminar->bindParam(':numvend', $id[0]);
-        $eliminar->bindParam(':numpieza', $id[1]);
-        $eliminar->execute();
+        if (strpos($id,",")){
+            $id = implode($id);
+            $eliminar = $this->conectar()->prepare("DELETE FROM preciosum WHERE numvend = :numvend and numpieza= :numpieza");
+            $eliminar->bindParam(':numvend', $id[0]);
+            $eliminar->bindParam(':numpieza', $id[1]);
+            $eliminar->execute();
+        }else if (is_int($id)){
+            $eliminar = $this->conectar()->prepare("DELETE FROM preciosum WHERE numvend = :numvend");
+            $eliminar->bindParam(':numvend', $id);
+            $eliminar->execute();
+        }else if(is_string($id)){
+            $eliminar = $this->conectar()->prepare("DELETE FROM preciosum WHERE numpieza = :numpieza");
+            $eliminar->bindParam(':numpieza', $id);
+            $eliminar->execute();
+        }
     }
 }

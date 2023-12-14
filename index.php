@@ -36,10 +36,13 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
         }
     }
 }
+?>
+<div>
+    <a href="index.php?pasar=-1">Anterior</a>
+    <a href="index.php?pasar=1">Siguiente</a>
+</div>
 
-
-
-
+<?php
     $ruta = "";
     switch ($_SESSION['idTablaActual']){
         case 0:
@@ -47,19 +50,16 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
             break;
 
         case 1:
-            $ruta = "./suministra/form_suministra.php";
+            $ruta = "./pieza/form_pieza.php";
             break;
 
 
         case 2:
-            $ruta = "./pieza/form_Pieza.php";
-            break;
 
-        case 3:
             $ruta = "./pedido/form_Pedido.php";
             break;
 
-        case 4:
+        case 3:
             $ruta = "./inventario/form_Inventario.php";
             break;
 
@@ -71,9 +71,5 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
     include_once  $ruta;
 ?>
 
-<div>
-    <a href="index.php?pasar=-1">Anterior</a>
-    <a href="index.php?pasar=1">Siguiente</a>
-</div>
 </body>
 </html>

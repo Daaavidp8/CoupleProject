@@ -42,6 +42,7 @@ switch ($_SESSION['idTablaActual']){
         throw new Exception("El id de la tabla actual no es válido");
 }
 
+
 $eliminar->Eliminar($_REQUEST['id']);
 header("Location: ../index.php");
 exit();

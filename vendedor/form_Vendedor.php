@@ -110,7 +110,8 @@ try {
 
             <td class="campos">
                 <a href="" class="btn btn-primary mr-1" ><i class="fa-solid fa-pen-to-square"></i></a>
-                <a href="controladores/eliminar.php?id=<?=$fila['numvend']?>" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                <a href="controladores/eliminar.php?id=<?=$fila['numvend']?>" class="btn btn-danger mr-1"><i class="fa-solid fa-trash-can"></i></a>
+                <a href="suministra/form_suministra.php?id[]=<?=$fila['numvend']?>&id[]=<?= $fila['nomvend']?>" class="btn btn-secondary"><i class="fa-solid fa-eye"></i></a>
             </td>
         </tr>
 
