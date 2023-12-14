@@ -23,7 +23,7 @@ try {
         <th></th>
     </tr>
 
-    <form action="./insertar.php" method="post">
+    <form action="controladores/insertar.php" method="post">
         <tr>
             <td>
                 <input type="text" class="form-control" name="valores[]" required>

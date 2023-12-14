@@ -1,6 +1,5 @@
 <?php
 include_once "../conexion.php";
-
 include_once "../acciones.php";
 
 class Suministra extends Conexion implements acciones
@@ -22,9 +21,9 @@ class Suministra extends Conexion implements acciones
 
         public function Insertar($valores){
         try {
-            $array = $valores;
-            $sentencia = "INSERT INTO preciosum VALUES (". implode(',', $array) .")";
-            $this->conectar()->exec($sentencia);
+            $sentencia = 'INSERT INTO preciosum VALUES (?,?,?,?,?)';
+            $insercion = $this->conectar()->prepare($sentencia);
+            $insercion->execute($valores);
         }catch (Exception $error){
             die($error->getMessage());
         }

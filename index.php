@@ -13,8 +13,8 @@
 <body class="container mt-5">
 <?php
 session_start();
-
-
+include_once "conexion.php";
+include_once "acciones.php";
 ini_set("display_errors",1);
 
 

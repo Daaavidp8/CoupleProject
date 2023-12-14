@@ -21,10 +21,11 @@ class Vendedor extends Conexion implements acciones
 
     public function Insertar($valores){
         try {
-            $array = $valores;
-            $sentencia = "INSERT INTO vendedor VALUES (". implode(',', $array) .")";
-            $this->conectar()->exec($sentencia);
+            $sentencia = 'INSERT INTO vendedor VALUES (?,?,?,?,?,?,?)';
+            $insercion = $this->conectar()->prepare($sentencia);
+            $insercion->execute($valores);
         }catch (Exception $error){
+            echo $sentencia;
             die($error->getMessage());
         }
     }

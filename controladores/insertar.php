@@ -38,4 +38,4 @@ switch ($_SESSION["idTablaActual"]){
 }
 
 $tabla->Insertar($_REQUEST["valores"]);
-header("Location:index.php");
+header("Location:../index.php");
