@@ -5,7 +5,7 @@ include_once "Vendedor.php";
 
 $mostrar = new Vendedor();
 try {
-    $consulta = $mostrar->Mostrar('vendedor');
+    $consulta = $mostrar->Mostrar();
 }catch (Exception $e){
     die($e->getMessage());
 }

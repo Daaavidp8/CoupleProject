@@ -4,7 +4,7 @@ include_once "Pieza.php";
 
 $mostrar = new Pieza();
 try {
-    $consulta = $mostrar->Mostrar("pieza");
+    $consulta = $mostrar->Mostrar();
 }catch (Exception $e){
     die($e->getMessage());
 }

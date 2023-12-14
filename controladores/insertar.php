@@ -2,11 +2,11 @@
 
 ini_set("display_errors",1);
 
-include_once "./inventario/Inventario.php";
-include_once "./pedido/Pedido.php";
-include_once "./suministra/Suministra.php";
-include_once "./vendedor/Vendedor.php";
-include_once "./pieza/Pieza.php";
+include_once "../inventario/Inventario.php";
+include_once "../pedido/Pedido.php";
+include_once "../suministra/Suministra.php";
+include_once "../vendedor/Vendedor.php";
+include_once "../pieza/Pieza.php";
 
 
 session_start();

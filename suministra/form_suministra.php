@@ -4,7 +4,7 @@ include_once "Suministra.php";
 $suministra = new Suministra();
 
 try {
-    $suministra = $suministra->Mostrar("preciosum");
+    $suministra = $suministra->Mostrar();
 }catch (Exception $e){
     die($e->getMessage());
 }

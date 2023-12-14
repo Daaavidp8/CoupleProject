@@ -1,9 +1,9 @@
 <?php
 include_once "Inventario.php";
 
-$mostrar = new Pedido();
+$mostrar = new Inventario();
 try {
-    $consulta = $mostrar->Mostrar("inventario");
+    $consulta = $mostrar->Mostrar();
 }catch (Exception $e){
     die($e->getMessage());
 }

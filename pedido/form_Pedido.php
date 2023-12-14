@@ -3,13 +3,13 @@ include_once "Pedido.php";
 
 $mostrar = new Pedido();
 try {
-    $consulta = $mostrar->Mostrar("inventario");
+    $consulta = $mostrar->Mostrar();
 }catch (Exception $e){
     die($e->getMessage());
 }
 
 ?>
-<h1 class="display-4">Inventario</h1>
+<h1 class="display-4">Pedido</h1>
 <table class="table table-bordered" style="border-collapse: collapse">
     <tr class="thead-dark">
         <th>Num Pedido</th>
