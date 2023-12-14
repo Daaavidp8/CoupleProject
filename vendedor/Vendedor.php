@@ -7,4 +7,10 @@ class Vendedor extends acciones
     {
         parent::__construct();
     }
+
+    public function Borrar($id){
+        $eliminar = $this->conectar()->prepare("DELETE FROM asignaturas WHERE codigo=:codigo");
+        $eliminar->bindParam(':codigo', $id);
+        $eliminar->execute();
+    }
 }

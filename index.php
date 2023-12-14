@@ -37,8 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
         return is_dir($directorio . '/' . $item) && $item[0] != '.';
     });
 
-    $numcarpetas = count($numcarpetas) - 1;
-
+    $numcarpetas = count($numcarpetas) - 2;
 
     if (isset($_REQUEST["pasar"])) {
         if ($_SESSION['idTablaActual'] === 0 && $_REQUEST["pasar"] == -1) {
@@ -71,6 +70,11 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
         case 3:
             $ruta = "./inventario/form_Inventario.php";
+            break;
+
+        default:
+            $ruta = "./vendedor/form_Vendedor.php";
+            $_SESSION['idTablaActual'] = 0;
             break;
     }
     include_once  $ruta;

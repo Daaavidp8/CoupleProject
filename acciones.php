@@ -30,4 +30,10 @@ class acciones extends Conexion
         }
     }
 
+    public function Eliminar($tabla,$id){
+        $eliminar = $this->conectar()->prepare("DELETE FROM $tabla WHERE codigo=:codigo");
+        $eliminar->bindParam(':codigo', $id);
+        $eliminar->execute();
+    }
+
 }
