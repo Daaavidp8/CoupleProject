@@ -14,6 +14,15 @@ include_once "../inventario/Inventario.php";
 
 
 $valor = $_REQUEST['id'];
+
+if (isset($_REQUEST['suministra'])){
+    $suministra = true;
+    $_SESSION['idTablaActual'] = 5;
+}else{
+    $suministra = false;
+}
+
+
 switch ($_SESSION['idTablaActual']){
     case 0:
         $eliminar = new Vendedor();
@@ -21,29 +30,43 @@ switch ($_SESSION['idTablaActual']){
         break;
 
     case 1:
-        $eliminar = new Suministra();
-        break;
-
-    case 2:
         $eliminar = new Pieza();
         break;
 
-    case 3:
+    case 2:
         $eliminar = new Pedido();
         break;
 
-    case 4:
+    case 3:
         $eliminar = new Inventario();
         break;
 
-    case 5:
+    case 4:
         $eliminar = new Linped();
+        break;
+
+    case 5:
+        $eliminar = new Suministra();
+        $valor = (int)$valor;
         break;
 
     default:
         throw new Exception("El id de la tabla actual no es válido");
 }
 
-$eliminar->Eliminar($valor);
-header("Location: ../index.php");
+var_dump($valor);
+
+
+if ($suministra){
+    $eliminar->Eliminar($valor,$_REQUEST['numpieza']);
+}else{
+    $eliminar->Eliminar($valor);
+}
+
+if ($suministra){
+    $nombre = $_REQUEST['nombre'];
+    header("Location: ../suministra/form_suministra.php?id[]=$valor&id[]=$nombre");
+}else{
+    header("Location: ../index.php");
+}
 exit();

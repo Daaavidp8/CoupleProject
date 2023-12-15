@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/9082f21abd.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="./estilosPrincipales.css">
+    <link rel="stylesheet" href="../estilosPrincipales.css">
 
 </head>
 <body class="container mt-5">
@@ -44,33 +44,25 @@ try {
         <th>Precio Unitario</th>
         <th>Diassum</th>
         <th>Descuento</th>
+        <th></th>
     </tr>
 
     <?php
-    foreach ($suministra as $fila){?>
+    foreach ($suministra as $fila){
+        $nombres = [$fila['numpieza'],$fila['preciounit'],$fila['diassum'],$fila['descuento']];?>
         <tr>
-            <td class="">
-                <div class="campos">
-                    <?=$fila['numpieza']?>
-                </div>
-            </td>
+            <?php
+            foreach ($nombres as $campo){ ?>
+                <td>
+                    <div class="campos">
+                        <?=$campo?>
+                    </div>
+                </td>
+            <?php } ?>
 
-            <td class="td-tabla">
-                <div class="campos">
-                    <?=$fila['preciounit']?>
-                </div>
-            </td>
-
-            <td class="td-tabla">
-                <div class="campos">
-                    <?=$fila['diassum']?>
-                </div>
-            </td>
-
-            <td class="td-tabla">
-                <div class="campos">
-                    <?=$fila['descuento']?>
-                </div>
+            <td class="campos">
+                <a href="" class="btn btn-primary mr-1" ><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="../controladores/eliminar.php?id=<?=$fila['numvend']?>&nombre=<?=$nombre?>&numpieza=<?= $fila['numpieza']?>&suministra=true" class="btn btn-danger mr-1"><i class="fa-solid fa-trash-can"></i></a>
             </td>
         </tr>
 

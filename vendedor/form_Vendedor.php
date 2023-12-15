@@ -28,7 +28,7 @@ try {
 
     <form action="controladores/insertar.php" method="post">
         <tr>
-            <?php for ($i = 0;$i < 8;$i++){?>
+            <?php for ($i = 0;$i < 7;$i++){?>
                 <td>
                     <input type="text" class="form-control" name="valores[]" required>
                 </td>

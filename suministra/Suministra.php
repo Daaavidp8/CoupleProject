@@ -28,8 +28,15 @@ class Suministra extends Conexion
         }
     }
 
-    public function Eliminar($id)
+    public function Eliminar($id,$numpieza = null)
     {
+        if ($numpieza !== null){
+            $eliminar = $this->conectar()->prepare("DELETE FROM preciosum WHERE numvend = :numvend and numpieza = :numpieza");
+            $eliminar->bindParam(':numvend', $id);
+            $eliminar->bindParam(':numpieza', $numpieza);
+            $eliminar->execute();
+        }
+
         if (is_int($id)){
             $eliminar = $this->conectar()->prepare("DELETE FROM preciosum WHERE numvend = :numvend");
             $eliminar->bindParam(':numvend', $id);
