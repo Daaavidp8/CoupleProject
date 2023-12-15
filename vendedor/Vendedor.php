@@ -8,14 +8,19 @@ class Vendedor extends Conexion implements acciones
         parent::__construct();
     }
 
-    public function Mostrar(){
-        try {
-            $mostrar = $this->conectar()->prepare("Select * FROM vendedor");
-            $mostrar->execute();
-            return $mostrar->fetchAll();
-        }catch (Exception $error){
-            die($error->getMessage());
-        }
+    public function Mostrar($id = null){
+            try {
+                if ($id === null){
+                    $mostrar = $this->conectar()->prepare("Select * FROM vendedor");
+                }else{
+                    $mostrar = $this->conectar()->prepare("Select * FROM vendedor where numvend = :id");
+                    $mostrar->bindParam(":id",$id);
+                }
+                $mostrar->execute();
+                return $mostrar->fetchAll();
+            }catch (Exception $error){
+                die($error->getMessage());
+            }
     }
 
     public function Insertar($valores){

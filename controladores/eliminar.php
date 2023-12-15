@@ -54,7 +54,6 @@ switch ($_SESSION['idTablaActual']){
         throw new Exception("El id de la tabla actual no es válido");
 }
 
-var_dump($valor);
 
 
 if ($suministra){
