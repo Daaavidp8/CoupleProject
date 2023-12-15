@@ -30,7 +30,7 @@ class Suministra extends Conexion
 
     public function Eliminar($id)
     {
-        if(is_int($id)){
+        if (is_int($id)){
             $eliminar = $this->conectar()->prepare("DELETE FROM preciosum WHERE numvend = :numvend");
             $eliminar->bindParam(':numvend', $id);
             $eliminar->execute();

@@ -20,13 +20,11 @@ try {
 
     <form action="controladores/insertar.php" method="post">
         <tr>
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
-
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
+            <?php for ($i = 0;$i < 2;$i++){?>
+                <td>
+                    <input type="text" class="form-control" name="valores[]" required>
+                </td>
+            <?php } ?>
 
             <td class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-success">Insertar</button>

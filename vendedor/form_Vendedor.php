@@ -28,33 +28,11 @@ try {
 
     <form action="controladores/insertar.php" method="post">
         <tr>
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
-
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
-
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
-
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
-
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
-
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
-
-            <td>
-                <input type="text" class="form-control" name="valores[]" required>
-            </td>
+            <?php for ($i = 0;$i < 8;$i++){?>
+                <td>
+                    <input type="text" class="form-control" name="valores[]" required>
+                </td>
+            <?php } ?>
 
             <td class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-success">Insertar</button>
@@ -64,54 +42,23 @@ try {
     </form>
 
     <?php
-    foreach ($consulta as $fila){?>
+
+    foreach ($consulta as $fila){
+        $nombres = [$fila['numvend'],$fila['nomvend'],$fila['nombrecomer'],$fila['telefono'],$fila['calle'],$fila['ciudad'],$fila['provincia']];?>
         <tr>
-            <td class="">
-                <div class="campos">
-                    <?=$fila['numvend']?>
-                </div>
-            </td>
-
-            <td class="td-tabla">
-                <div class="campos">
-                    <?=$fila['nomvend']?>
-                </div>
-            </td>
-
-            <td class="td-tabla">
-                <div class="campos">
-                    <?=$fila['nombrecomer']?>
-                </div>
-            </td>
-
-            <td class="td-tabla">
-                <div class="campos">
-                    <?=$fila['telefono']?>
-                </div>
-            </td>
-
-            <td class="td-tabla">
-                <div class="campos">
-                    <?=$fila['calle']?>
-                </div>
-            </td>
-
-            <td class="td-tabla">
-                <div class="campos">
-                    <?=$fila['ciudad']?>
-                </div>
-            </td>
-
-            <td class="td-tabla">
-                <div class="campos">
-                    <?=$fila['provincia']?>
-                </div>
-            </td>
+            <?php
+            foreach ($nombres as $campo){ ?>
+                <td>
+                    <div class="campos">
+                        <?=$campo?>
+                    </div>
+                </td>
+        <?php } ?>
 
             <td class="campos">
                 <a href="" class="btn btn-primary mr-1" ><i class="fa-solid fa-pen-to-square"></i></a>
-                <a href="controladores/eliminar.php?id=<?=(int)$fila['numvend']?>" class="btn btn-danger mr-1"><i class="fa-solid fa-trash-can"></i></a>
-                <a href="suministra/form_suministra.php?id[]=<?=(int)$fila['numvend']?>&id[]=<?= $fila['nomvend']?>" class="btn btn-secondary"><i class="fa-solid fa-eye"></i></a>
+                <a href="controladores/eliminar.php?id=<?=$fila['numvend']?>" class="btn btn-danger mr-1"><i class="fa-solid fa-trash-can"></i></a>
+                <a href="suministra/form_suministra.php?id[]=<?=$fila['numvend']?>&id[]=<?= $fila['nomvend']?>" class="btn btn-secondary"><i class="fa-solid fa-eye"></i></a>
             </td>
         </tr>
 

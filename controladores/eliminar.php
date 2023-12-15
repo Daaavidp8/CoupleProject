@@ -13,11 +13,11 @@ include_once "../linped/Linped.php";
 include_once "../inventario/Inventario.php";
 
 
-
-
+$valor = $_REQUEST['id'];
 switch ($_SESSION['idTablaActual']){
     case 0:
         $eliminar = new Vendedor();
+        $valor = (int)$valor;
         break;
 
     case 1:
@@ -44,6 +44,6 @@ switch ($_SESSION['idTablaActual']){
         throw new Exception("El id de la tabla actual no es válido");
 }
 
-
-//header("Location: ../index.php");
-//exit();
+$eliminar->Eliminar($valor);
+header("Location: ../index.php");
+exit();

@@ -43,7 +43,7 @@ class Pedido extends Conexion implements acciones
         }
 
 
-        $eliminar = $this->conectar()->prepare("DELETE FROM pedido WHERE numpedido = :codigo");
+        $eliminar = $this->conectar()->prepare("DELETE FROM pedido WHERE numvend = :codigo");
         $eliminar->bindParam(':codigo', $id);
         $eliminar->execute();
     }

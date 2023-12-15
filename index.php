@@ -50,9 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
             break;
 
         case 1:
-            $ruta = "./pieza/form_pieza.php";
+            $ruta = "./pieza/form_Pieza.php";
             break;
-
 
         case 2:
 
